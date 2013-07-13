@@ -91,14 +91,11 @@ if [ "$dev" == "y" ]; then
 	echo -e "\033[1;34mInstalling berkshelf...\033[0m"
 	gem install berkshelf
 
-	echo -e "\033[1;34mDownloading vagrant box (ubuntu 13.04). This could take a while...\033[0m"
-	vagrant box add base http://goo.gl/h2ckI
-
 	#sudo pip install MySQL-Python
 	#mysql -hlocalhost -uroot -e "create database nosereport;"
 	#nosetests --dbreport-create-schema --dbreport-dbtype=mysql --dbreport-host=localhost --dbreport-username=root --dbreport-db=nosereport
 fi
 
 echo ""
-echo "All Done! Restart before use"
+echo -e "\033[0;32mAll Done! Restart before use\033[0"
 echo ""
