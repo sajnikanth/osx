@@ -1,0 +1,5 @@
+#!/bin/bash
+mv /vagrant/.bash* ~/
+mv /vagrant/.git* ~/
+mv /vagrant/.ssh/* ~/.ssh/
+rm -rf /vagrant/.ssh
