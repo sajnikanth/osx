@@ -3,17 +3,17 @@ echo -n -e "\033[1;31mSetup symlinks? \033[0;32m(y/n): \033[0m"
 read -n 1 sym
 echo ""
 if [ "$sym" == "y" ]; then
-	rm /Users/sajnikanth/.vim
+	rm ~/.vim
 	ln -s /Volumes/Stuff/repo/dotfiles/.vim ~/.vim
-	rm /Users/sajnikanth/.vimrc
+	rm ~/.vimrc
 	ln -s /Volumes/Stuff/repo/dotfiles/.vimrc ~/.vimrc
 	rm ~/.bash_profile
 	ln -s /Volumes/Stuff/repo/dotfiles/.bash_profile ~/.bash_profile
 	rm ~/.bashrc
 	ln -s /Volumes/Stuff/repo/dotfiles/.bashrc ~/.bashrc
-	rm /Users/sajnikanth/.gitconfig
+	rm ~/.gitconfig
 	ln -s /Volumes/Stuff/repo/dotfiles/.gitconfig ~/.gitconfig
-	rm /Users/sajnikanth/.gitignore_global
+	rm ~/.gitignore_global
 	ln -s /Volumes/Stuff/repo/dotfiles/.gitignore_global ~/.gitignore_global
 	ln -s /Volumes/Stuff/repo/dotfiles/.ssh/ ~/.ssh
 	/bin/bash --login -c 'chmod 700 ~/.ssh/id_rsa'
