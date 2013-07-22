@@ -16,6 +16,7 @@ if [ "$sym" == "y" ]; then
 	rm ~/.gitignore_global
 	ln -s /Volumes/Stuff/repo/dotfiles/.gitignore_global ~/.gitignore_global
 	ln -s /Volumes/Stuff/repo/dotfiles/.ssh/ ~/.ssh
+	ln -s /Volumes/Stuff/repo/dotfiles/.gitflow_export ~/.gitflow_export
 	/bin/bash --login -c 'chmod 700 ~/.ssh/id_rsa'
 	/bin/bash --login -c 'chmod 700 ~/.ssh/*.pem'
 	ln -s /Volumes/Stuff/Cloud/Dropbox/ ~/Dropbox
@@ -24,7 +25,6 @@ if [ "$sym" == "y" ]; then
 	ln -s /Volumes/Stuff/vagrant/ ~/vagrant
 	/bin/bash --login -c '. ~/.bash_profile'
 	exec $SHELL -l
-	
 fi
 
 echo -n -e "\033[1;31mInstall remaining base apps (and is port working)? \033[0;32m(y/n): \033[0m"
