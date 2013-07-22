@@ -32,13 +32,13 @@ read -n 1 base
 echo ""
 if [ "$base" == "y" ]; then
 	echo -e "\033[1;34mInstalling git...\033[0m"
-	sudo port install git-core
-
-	echo -e "\033[1;34mInstalling bash_completion...\033[0m"
-	sudo port install bash-completion
+	sudo port install git-core +bash_completion
 
 	echo -e "\033[1;34mInstalling git prompt...\033[0m"
 	curl -o ~/.git-prompt.sh https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
+
+	echo -e "\033[1;34mInstalling git completion...\033[0m"
+	curl -o ~/.git-completion.bash https://raw.github.com/git/git/master/contrib/completion/git-completion.bash
 
 	echo -e "\033[1;34mInstalling ack...\033[0m"
 	mkdir ~/bin
