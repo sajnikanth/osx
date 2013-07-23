@@ -1,0 +1,5 @@
+#!/bin/bash
+cp ~/repo/dotfiles/ubuntu/.bashrc .
+cp ~/repo/dotfiles/.gitconfig .
+cp ~/.ssh/id_rsa* .
+cp ~/bin/dot .
