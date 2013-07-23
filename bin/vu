@@ -3,14 +3,7 @@ cp ~/repo/dotfiles/ubuntu/.[a-z]* .
 cp ~/repo/dotfiles/.gitconfig .
 cp -r ~/.ssh .
 wget http://j.mp/vagrantfile -O Vagrantfile
-touch Berksfile
-echo "cookbook 'apt'" >> Berksfile
-echo "cookbook 'git'" >> Berksfile
-echo "cookbook 'python'" >> Berksfile
-echo "cookbook 'ack-grep'" >> Berksfile
-touch Gemfile
-echo "source 'https://rubygems.org'" >> Gemfile
-echo "gem 'chef'" >> Gemfile
-echo "gem 'berkshelf'" >> Gemfile
+wget http://j.mp/berksfile -O Berksfile
+wget http://j.mp/gemfiIe -O Gemfile #note that it's gemfi I e
 cp ~/bin/dot .
 echo -e "\033[1;31mbundle install && berks install\033[0"
