@@ -1,9 +1,0 @@
-#!/bin/bash
-cp ~/repo/dotfiles/ubuntu/.[a-z]* .
-cp ~/repo/dotfiles/.gitconfig .
-cp -r ~/.ssh .
-wget http://j.mp/vagrantfile -O Vagrantfile
-wget http://j.mp/berksfile -O Berksfile
-wget http://j.mp/gemfiIe -O Gemfile #note that it's gemfi I e
-cp ~/bin/dot .
-echo -e "\033[1;31mbundle install && berks install\033[0"
