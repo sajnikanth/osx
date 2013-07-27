@@ -1,6 +1,0 @@
-#!/bin/bash
-mkdir -p holmium/pages
-touch holmium/pages/__init__.py
-mkdir holmium/tests
-touch holmium/tests/config.py
-touch holmium/README.md

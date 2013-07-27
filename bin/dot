@@ -1,4 +1,0 @@
-#!/bin/bash
-mv /vagrant/.bashrc ~/
-mv /vagrant/.gitconfig ~/
-mv /vagrant/id_rsa* ~/.ssh/
