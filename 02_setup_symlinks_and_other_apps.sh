@@ -44,6 +44,14 @@ if [ "$base" == "y" ]; then
 		echo -e "\033[0;32mgit found...\033[0m"
 	fi
 
+	if test ! -s ~/.git-prompt.sh
+	then
+		echo -e "\033[1;34mInstalling git prompt...\033[0m"
+		curl -o ~/.git-prompt.sh https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh
+	else
+		echo -e "\033[0;32mgit-prompt found...\033[0m"
+	fi
+
 	if test ! -s ~/.git-completion.bash
 	then
 		echo -e "\033[1;34mInstalling git completion...\033[0m"
