@@ -69,15 +69,6 @@ if [ "$base" == "y" ]; then
 		echo -e "\033[0;32mack found...\033[0m"
 	fi
 
-	if test ! -d ~/.rbenv
-	then
-		echo -e "\033[1;34mInstalling rbenv and rbenv-build...\033[0m"
-		git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-		git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
-	else
-		echo -e "\033[0;32mrbenv found...\033[0m"
-	fi
-
 	if test ! -s /usr/local/bin/brew
 	then
 		echo -e "\033[1;34mInstalling homebrew...\033[0m"
@@ -123,6 +114,15 @@ if [ "$dev" == "y" ]; then
 
 	echo -e "\033[1;34mChecking / Installing vagrant berkshelf...\033[0m"
 	vagrant plugin install vagrant-berkshelf
+
+	if test ! -d ~/.rbenv
+	then
+		echo -e "\033[1;34mInstalling rbenv and rbenv-build...\033[0m"
+		git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
+		git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+	else
+		echo -e "\033[0;32mrbenv found...\033[0m"
+	fi
 
 	if test ! -d ~/.rbenv/versions/*.*
 	then
