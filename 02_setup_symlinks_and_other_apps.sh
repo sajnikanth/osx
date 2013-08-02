@@ -115,30 +115,19 @@ if [ "$dev" == "y" ]; then
 	echo -e "\033[1;34mChecking / Installing vagrant berkshelf...\033[0m"
 	vagrant plugin install vagrant-berkshelf
 
-	if test ! -d ~/.rbenv
+	if test ! -d ~/.rvm
 	then
-		echo -e "\033[1;34mInstalling rbenv and rbenv-build...\033[0m"
-		git clone https://github.com/sstephenson/rbenv.git ~/.rbenv
-		git clone https://github.com/sstephenson/ruby-build.git ~/.rbenv/plugins/ruby-build
+		echo -e "\033[1;34mInstalling rvm and ruby...\033[0m"
+		\curl -L https://get.rvm.io | bash -s stable --ruby
 	else
-		echo -e "\033[0;32mrbenv found...\033[0m"
-	fi
-
-	if test ! -d ~/.rbenv/versions/*.*
-	then
-		echo -e "\033[1;34mInstalling ruby 1.9.3...\033[0m"
-		rbenv install 1.9.3-p385
-		/bin/bash --login -c ". ~/.bash_profile"
-		rbenv rehash && rbenv shell 1.9.3-p385 && rbenv global 1.9.3-p385
-	else
-		echo -e "\033[0;32mruby found...\033[0m"
+		echo -e "\033[0;32mrvm found...\033[0m"
 	fi
 
 	echo -e "\033[1;34mChecking / Installing bundler...\033[0m"
-	/bin/bash --login -c "rbenv shell 1.9.3-p385 && gem install bundler"
+	/bin/bash --login -c "rvm reload && gem install bundler"
 
 	echo -e "\033[1;34mChecking / Installing berkshelf...\033[0m"
-	/bin/bash --login -c "rbenv shell 1.9.3-p385 && gem install berkshelf"
+	/bin/bash --login -c "rvm reload && gem install berkshelf"
 
 	#if test ! -d /Library/Python/2.7/site-packages/MySQL_python*
 	#then
