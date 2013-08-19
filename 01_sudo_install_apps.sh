@@ -2,6 +2,18 @@
 
 echo -e "\033[1;31mChecking / Installing base apps...\033[0m"
 
+if test ! -s /usr/local/bin/wget
+then
+	echo -e "\033[1;34mInstalling wget...\033[0m"
+	curl -O https://dl.dropboxusercontent.com/u/4289150/apps/wget.zip
+	unzip -q wget.zip
+	installer -pkg wget.pkg -target LocalSystem
+	rm wget.*
+else
+	echo -e "\033[0;32mwget found...\033[0m"
+fi
+
+
 if test ! -d /Applications/Google\ Chrome.app
 then
 	echo -e "\033[1;34mInstalling Google Chrome...\033[0m"
@@ -61,6 +73,18 @@ then
 	rm java.dmg
 else
 	echo -e "\033[0;32mJRE found...\033[0m"
+fi
+
+if test ! -d /Applications/VLC.app
+then
+	echo -e "\033[1;34mInstalling VLC...\033[0m"
+	wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/5758 -O vlc.dmg
+	hdiutil mount vlc.dmg
+	cp -R /Volumes/vlc*/*.app /Applications/
+	hdiutil unmount -force /Volumes/vlc*
+	rm vlc.dmg
+else
+	echo -e "\033[0;32mVLC found...\033[0m"
 fi
 
 if test ! -d /Applications/Alfred*.app
@@ -226,18 +250,6 @@ if [ "$home" == "y" ]; then
 		rm flux.zip
 	else
 		echo -e "\033[0;32mflux found...\033[0m"
-	fi
-
-	if test ! -d /Applications/VLC.app
-	then
-		echo -e "\033[1;34mInstalling VLC...\033[0m"
-		wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/5758 -O vlc.dmg
-		hdiutil mount vlc.dmg
-		cp -R /Volumes/vlc*/*.app /Applications/
-		hdiutil unmount -force /Volumes/vlc*
-		rm vlc.dmg
-	else
-		echo -e "\033[0;32mVLC found...\033[0m"
 	fi
 
 	if test ! -d /Applications/Transmission.app
