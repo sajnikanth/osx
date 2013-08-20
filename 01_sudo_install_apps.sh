@@ -13,7 +13,6 @@ else
 	echo -e "\033[0;32mwget found...\033[0m"
 fi
 
-
 if test ! -d /Applications/Google\ Chrome.app
 then
 	echo -e "\033[1;34mInstalling Google Chrome...\033[0m"
@@ -24,6 +23,17 @@ then
 	rm googlechrome.dmg
 else
 	echo -e "\033[0;32mGoogle Chrome found...\033[0m"
+fi
+
+if test ! -d /Library/Internet\ Plug-Ins/nplastpass.plugin
+then
+	echo -e "\033[1;34mInstalling LastPass...\033[0m"
+	wget --no-check-certificate --user-agent "safari" -A dmg https://lastpass.com/download/cdn/lpmacosx.dmg
+	hdiutil mount lpmacosx.dmg
+	installer -pkg /Volumes/LastPass*/lpmacosx.pkg -target LocalSystem
+	rm lpmacosx.dmg
+else
+	echo -e "\033[0;32mLastPass found...\033[0m"
 fi
 
 if test ! -d /Applications/Google\ Notifier.app
@@ -114,8 +124,8 @@ fi
 if test ! -d /Applications/Evernote.app
 then
 	echo -e "\033[1;34mInstalling Evernote...\033[0m"
-	wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/27456
-	unzip Evernote*.zip
+	wget --no-check-certificate --user-agent "safari" http://www.macupdate.com/download/27456 -O evernote.zip
+	unzip evernote.zip
 	mv Evernote.app /Applications/
 	#hdiutil convert -quiet evernote.dmg -format UDTO -o evernote
 	#hdiutil attach -quiet -nobrowse -noverify -noautoopen -mountpoint right_here evernote.cdr
@@ -179,7 +189,7 @@ fi
 if test ! -d /Applications/iTerm.app
 then
 	echo -e "\033[1;34mInstalling iTerm2...\033[0m"
-	wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/40028 -O iterm2.zip
+	wget --no-check-certificate --user-agent "safari" http://www.macupdate.com/download/40028 -O iterm2.zip
 	unzip -q iterm2.zip
 	mv iTerm.app /Applications/
 	rm iterm2.zip
@@ -211,7 +221,7 @@ fi
 if test ! -s /opt/local/bin/port
 then
 	echo -e "\033[1;34mInstalling Macports...\033[0m"
-	wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/21309 -O macports.pkg
+	wget --no-check-certificate --user-agent "safari" http://www.macupdate.com/download/21309 -O macports.pkg
 	#wget https://distfiles.macports.org/MacPorts/MacPorts-2.1.3-10.8-MountainLion.pkg --no-check-certificate
 	installer -pkg macports.pkg -target LocalSystem
 	rm macports.pkg
@@ -243,7 +253,7 @@ if [ "$home" == "y" ]; then
 	if test ! -d /Applications/Flux.app
 	then
 		echo -e "\033[1;34mInstalling flux...\033[0m"
-		wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/37261 -O flux.zip
+		wget --no-check-certificate --user-agent "safari" http://www.macupdate.com/download/37261 -O flux.zip
 		#wget https://herf.org/flux/Flux.zip --secure-protocol=SSLv3 --no-check-certificate
 		unzip -q flux.zip
 		mv Flux.app /Applications/
@@ -291,7 +301,7 @@ if [ "$home" == "y" ]; then
 	if test ! -d ~/Library/PreferencePanes/TVShows.prefPane
 	then
 		echo -e "\033[1;34mInstalling TVShows...\033[0m"
-		wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/24834 -O tvshows.zip
+		wget --no-check-certificate --user-agent "safari" http://www.macupdate.com/download/24834 -O tvshows.zip
 		#wget http://tvshowsapp.com/TVShows.zip -O TVShows.zip --no-check-certificate
 		unzip -q tvshows.zip
 		mv TVShows.prefPane/ ~/Library/PreferencePanes/
@@ -316,7 +326,7 @@ if [ "$home" == "y" ]; then
 	if test ! -d /Applications/SkyDrive.app
 	then
 		echo -e "\033[1;34mInstalling SkyDrive...\033[0m"
-		wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/42736 -O skydrive.pkg
+		wget --no-check-certificate --user-agent "safari" http://www.macupdate.com/download/42736 -O skydrive.pkg
 		installer -pkg skydrive.pkg -target LocalSystem
 		rm skydrive.pkg
 	else
