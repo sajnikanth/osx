@@ -86,6 +86,22 @@ if [ "$base" == "y" ]; then
 		echo -e "\033[0;32mtree found...\033[0m"
 	fi
 
+	if test ! -s /usr/local/bin/cowsay
+	then
+		echo -e "\033[1;34mInstalling cowsay...\033[0m"
+		/bin/bash --login -c ". ~/.bash_profile && brew install cowsay"
+	else
+		echo -e "\033[0;32mcowsay found...\033[0m"
+	fi
+
+	if test ! -s /usr/local/bin/fortune
+	then
+		echo -e "\033[1;34mInstalling fortune...\033[0m"
+		/bin/bash --login -c ". ~/.bash_profile && brew install fortune"
+	else
+		echo -e "\033[0;32mfortune found...\033[0m"
+	fi
+
 fi
 
 echo -n -e "\033[1;31mInstall remaining dev apps? \033[0;32m(y/n): \033[0m"
