@@ -8,8 +8,6 @@ echo -n  -e "\033[1;31mHave you installed Command Line Tools? \033[0;32m(y/n): \
 read -n 1 base
 echo""
 if [ "$base" == "y" ]; then
-	echo "Enter sudo password"
-	sudo echo ""
 	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
 	brew doctor
 	brew tap phinze/homebrew-cask
@@ -30,7 +28,7 @@ if [ "$base" == "y" ]; then
 		echo -e "\033[1;34mInstalling Shiftit...\033[0m"
 		curl -O https://dl.dropboxusercontent.com/u/4289150/apps/shiftit.zip
 		unzip -q shiftit.zip
-		sudo mv ShiftIt.app/ /Applications/
+		mv ShiftIt.app/ /Applications/
 		rm shiftit.zip
 	else
 		echo -e "\033[0;32mShiftit found...\033[0m"
@@ -40,7 +38,7 @@ if [ "$base" == "y" ]; then
 		echo -e "\033[1;34mInstalling Mouselocator...\033[0m"
 		wget --no-check-certificate http://www.2point5fish.com/files/MouseLocator.dmg -O mouselocator.dmg
 		hdiutil	mount mouselocator.dmg
-		sudo cp -r /Volumes/Mouse*/Mouse*.app/Contents/Resources/Distribution/MouseLocator.prefPane ~/Library/PreferencePanes/
+		cp -r /Volumes/Mouse*/Mouse*.app/Contents/Resources/Distribution/MouseLocator.prefPane ~/Library/PreferencePanes/
 		hdiutil unmount -force /Volumes/Mouse*
 		rm mouselocator.dmg
 	else
@@ -138,7 +136,7 @@ if [ "$dev" == "y" ]; then
 	vagrant plugin install vagrant-berkshelf
 	/bin/bash --login -c "rvm reload && gem install bundler"
 	/bin/bash --login -c "rvm reload && gem install berkshelf"
-	if test ! -d /Library/Java/JavaVirtualMachines
+	if test ! -d /usr/bin/java
 	then
 		echo -e "\033[1;34mInstalling Java...\033[0m"
 		wget http://support.apple.com/downloads/DL1572/en_US/JavaForOSX2013-05.dmg -O jdk.dmg
