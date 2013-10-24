@@ -95,7 +95,7 @@ echo -n  -e "\033[1;31mInstall apps for your personal computer? \033[0;32m(y/n):
 read -n 1 home
 echo""
 if [ "$home" == "y" ]; then
-	brew cask install flux
+	brew cask install f-lux
 	brew cask install transmission
 	brew cask install picasa
 	brew cask install team-viewer
