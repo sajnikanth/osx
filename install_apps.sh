@@ -15,7 +15,6 @@ if [ "$base" == "y" ]; then
 	brew install wget
 	brew cask install google-chrome
 	brew cask install lastpass-universal
-	brew cask install google-notifier
 	brew cask install firefox
 	brew cask install flash
 	brew cask install vlc
@@ -98,7 +97,6 @@ if [ "$home" == "y" ]; then
 	brew cask install picasa
 	brew cask install team-viewer
 	brew cask install tv-shows
-	brew cask install livestation
 	if test ! -d /Applications/SkyDrive.app
 	then
 		echo -e "\033[1;34mInstalling SkyDrive...\033[0m"
@@ -212,7 +210,8 @@ if [ "$sym" == "y" ]; then
 	ln -s /Volumes/Stuff/vagrant/ ~/vagrant
 	/bin/bash --login -c ". ~/.bash_profile"
 fi
-
+echo -e "Linking brew cask to alfred"
+brew cask alfred link
 echo""
 echo "***************************************************************************************************************************************"
 echo -e "                       To change hostname, run this ---> \033[1;31msudo scutil --set HostName <hostname>\033[0m"
