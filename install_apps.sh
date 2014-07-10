@@ -8,7 +8,7 @@ echo -n  -e "\033[1;31mHave you installed Command Line Tools? \033[0;32m(y/n): \
 read -n 1 base
 echo""
 if [ "$base" == "y" ]; then
-	ruby -e "$(curl -fsSL https://raw.github.com/mxcl/homebrew/go)"
+	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
 	brew doctor
 	brew tap phinze/homebrew-cask
 	brew install brew-cask
