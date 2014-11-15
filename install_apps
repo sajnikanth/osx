@@ -8,7 +8,7 @@ echo -n  -e "\033[1;31mHave you installed Command Line Tools? \033[0;32m(y/n): \
 read -n 1 base
 echo ""
 if [ "$base" == "y" ]; then
-	ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"
+	#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	brew doctor
 	brew tap phinze/homebrew-cask
 	brew install wget
@@ -20,14 +20,16 @@ if [ "$base" == "y" ]; then
 	brew cask install lastpass-universal
 	brew cask install firefox
 	brew cask install vlc
-	brew cask install alfred
 	brew cask install dropbox
 	brew cask install iterm2
 	brew cask install skype
 	brew cask install xquartz
 	brew cask install shiftit
+	brew cask install teamviewer
+	brew cask install picasa
+	brew cask install google-drive
+	brew cask install google-hangouts
 	sudo easy_install pip
-	sudo pip install grip
 	# no brew cask for MouseLocator
 	wget --no-check-certificate http://www.2point5fish.com/files/MouseLocator.dmg -O mouselocator.dmg
 	hdiutil	mount mouselocator.dmg
@@ -36,11 +38,6 @@ if [ "$base" == "y" ]; then
 	rm mouselocator.dmg
 	# brew cask for prey requires API key
 	wget --no-check-certificate -nd -r -l1 --no-parent -A dmg https://preyproject.com/releases/current/ && rm robots.txt && mv prey*.dmg ~/Desktop
-	# brew cask installation of alfred doesn't work well with app symlinks
-	wget --no-check-certificate --user-agent "safari" -A dmg http://www.macupdate.com/download/34344 -O alfred.zip
-	unzip alfred.zip
-	mv Alfred* /Applications/
-	rm alfred.zip
 fi
 
 echo -n  -e "\033[1;31mInstall apps for your personal computer? \033[0;32m(y/n): \033[0m"
@@ -49,21 +46,18 @@ echo""
 if [ "$home" == "y" ]; then
 	brew cask install flux
 	brew cask install transmission
-	brew cask install picasa
-	brew cask install teamviewer
 	brew cask install tvshows
-	brew cask install skydrive
-	brew cask install google-drive
+	brew cask install onedrive
 	brew cask install copy
-	brew cask install google-hangouts
 fi
 
 echo -n  -e "\033[1;31mInstall dev apps? \033[0;32m(y/n): \033[0m"
 read -n 1 dev
 echo ""
 if [ "$dev" == "y" ]; then
+	brew cask install jabber-video
 	brew install chromedriver
-	brew cask install virtualbox
+	#brew cask install virtualbox
 	sudo easy_install nose
 	sudo easy_install bpython
 	sudo pip install -U selenium
@@ -71,7 +65,7 @@ if [ "$dev" == "y" ]; then
 	sudo pip install flake8
 	#brew cask install vagrant
 	#brew cask install mongohub
-	#brew cask install sequel-pro
+	brew cask install sequel-pro
 	#\curl -L https://get.rvm.io | bash -s stable --ruby
 	#/bin/bash --login -c "rvm reload && gem install bundler"
 	#vagrant plugin install vagrant-omnibus
@@ -103,14 +97,13 @@ if [ "$sym" == "y" ]; then
 	/bin/bash --login -c 'sudo chmod 700 ~/.ssh/*'
 	ln -s /Volumes/Stuff/Cloud/Dropbox/ ~/Dropbox
 	ln -s /Volumes/Stuff/repo/ ~/repo
-	ln -s /Volumes/Stuff/repo/android_sdk/ ~/android_sdk
-	ln -s /Volumes/Stuff/vagrant/ ~/vagrant
+	ln -s /Volumes/Stuff/repo/vistaprint/manhattan/mhn-api-tests ~/api
+	ln -s /Volumes/Stuff/repo/vistaprint/manhattan/mhn-holmium ~/holm
 	/bin/bash --login -c ". ~/.bash_profile"
 fi
 echo -e "Cleanup and link brew cask to alfred"
 brew cleanup && brew cask cleanup
 rm -f -r /Library/Caches/Homebrew/*
-brew cask alfred link
 echo""
 echo "***************************************************************************************************************************************"
 echo -e "                       To change hostname, run this ---> \033[1;31msudo scutil --set HostName <hostname>\033[0m"
