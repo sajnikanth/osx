@@ -1,5 +1,12 @@
 #!/bin/bash
 echo ""
+echo -n  -e "\033[1;31mDoes /usr/local/ exist? (Refer to http://j.mp/1O4rePe) \033[0;32m(y/n): \033[0m"
+read -n 1 base
+echo ""
+if [ "$base" == "y" ]; then
+	sudo chown -R $(whoami):admin /usr/local
+fi
+echo ""
 echo "***************************************************************************************************************************************"
 echo -e "                              To install Command Line Tools, run this ---> \033[1;31mxcode-select --install\033[0m"
 echo "***************************************************************************************************************************************"
@@ -8,7 +15,8 @@ echo -n  -e "\033[1;31mHave you installed Command Line Tools? \033[0;32m(y/n): \
 read -n 1 base
 echo ""
 if [ "$base" == "y" ]; then
-	#ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	sudo chown -R $(whoami):admin /usr/local # from OSX 10.11
 	brew doctor
 	brew tap phinze/homebrew-cask
 	brew install wget
@@ -17,10 +25,11 @@ if [ "$base" == "y" ]; then
 	brew install ack
 	brew install brew-cask
 	brew cask install google-chrome
-	brew cask install lastpass-universal
+	brew cask install lastpass
 	brew cask install firefox
 	brew cask install vlc
 	brew cask install dropbox
+	brew cask install the-unarchiver
 	brew cask install iterm2
 	brew cask install skype
 	brew cask install xquartz
@@ -29,6 +38,8 @@ if [ "$base" == "y" ]; then
 	brew cask install picasa
 	brew cask install google-drive
 	brew cask install google-hangouts
+	brew cask install flickr-uploadr
+	brew cask install namechanger
 	sudo easy_install pip
 	# no brew cask for MouseLocator
 	wget --no-check-certificate http://www.2point5fish.com/files/MouseLocator.dmg -O mouselocator.dmg
@@ -37,18 +48,16 @@ if [ "$base" == "y" ]; then
 	hdiutil unmount -force /Volumes/Mouse*
 	rm mouselocator.dmg
 	# brew cask for prey requires API key
-	wget --no-check-certificate -nd -r -l1 --no-parent -A dmg https://preyproject.com/releases/current/ && rm robots.txt && mv prey*.dmg ~/Desktop
+	echo -n  -e "\033[1;31mInstall Prey manually \033[0m"
+	echo ""
 fi
 
 echo -n  -e "\033[1;31mInstall apps for your personal computer? \033[0;32m(y/n): \033[0m"
 read -n 1 home
 echo""
 if [ "$home" == "y" ]; then
-	brew cask install flux
 	brew cask install transmission
 	brew cask install tvshows
-	brew cask install onedrive
-	brew cask install copy
 fi
 
 echo -n  -e "\033[1;31mInstall dev apps? \033[0;32m(y/n): \033[0m"
@@ -56,23 +65,29 @@ read -n 1 dev
 echo ""
 if [ "$dev" == "y" ]; then
 	brew cask install jabber-video
+	brew cask install jing
+	brew cask install sequel-pro
+	brew cask install virtualbox
+	brew install mysql
+	brew install phantomjs
 	brew install chromedriver
-	#brew cask install virtualbox
 	sudo easy_install nose
 	sudo easy_install bpython
 	sudo pip install -U selenium
 	sudo pip install -U holmium.core
 	sudo pip install flake8
+	ln -s /opt/homebrew-cask/Caskroom/firefox/4*/Firefox.app /Applications/Firefox.app
+	echo -n  -e "\033[1;31mInstall Microsoft Remote Desktop  manually \033[0m"
+	echo ""
 	#brew cask install vagrant
 	#brew cask install mongohub
-	brew cask install sequel-pro
+	#brew cask install java
 	#\curl -L https://get.rvm.io | bash -s stable --ruby
 	#/bin/bash --login -c "rvm reload && gem install bundler"
 	#vagrant plugin install vagrant-omnibus
 	#vagrant plugin install vagrant-berkshelf
 	#/bin/bash --login -c "rvm reload && gem install bundler"
 	#/bin/bash --login -c "rvm reload && gem install berkshelf"
-	#brew cask install java
 fi
 
 echo -n -e "\033[1;31mdotfiles in /Volumes/Stuff/repo/dotfiles/? \033[0;32m(y/n): \033[0m"
@@ -97,11 +112,11 @@ if [ "$sym" == "y" ]; then
 	/bin/bash --login -c 'sudo chmod 700 ~/.ssh/*'
 	ln -s /Volumes/Stuff/Cloud/Dropbox/ ~/Dropbox
 	ln -s /Volumes/Stuff/repo/ ~/repo
-	ln -s /Volumes/Stuff/repo/vistaprint/manhattan/mhn-api-tests ~/api
-	ln -s /Volumes/Stuff/repo/vistaprint/manhattan/mhn-holmium ~/holm
+	ln -s /Volumes/Stuff/repo/mhn-api-tests ~/api
+	ln -s /Volumes/Stuff/repo/mhn-holmium ~/holm
 	/bin/bash --login -c ". ~/.bash_profile"
 fi
-echo -e "Cleanup and link brew cask to alfred"
+echo -e "Cleanup "
 brew cleanup && brew cask cleanup
 rm -f -r /Library/Caches/Homebrew/*
 echo""
