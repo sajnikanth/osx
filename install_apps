@@ -106,6 +106,8 @@ if [ "$base" == "y" ]; then
 			ln -s /Volumes/Stuff/repo/mhn-api-tests ~/api
 			ln -s /Volumes/Stuff/repo/mhn-holmium ~/holm
 			/bin/bash --login -c ". ~/.bash_profile"
+			mkdir ~/bin
+			ln -s /Volumes/Stuff/repo/dotfiles/clean ~/bin/clean
 		fi
 		echo -e "Cleanup "
 		brew cleanup && brew cask cleanup
