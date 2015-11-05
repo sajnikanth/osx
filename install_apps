@@ -16,6 +16,7 @@ if [ "$base" == "y" ]; then
 		wget https://raw.github.com/git/git/master/contrib/completion/git-prompt.sh -O ~/.git-prompt.sh
 		wget https://raw.github.com/git/git/master/contrib/completion/git-completion.bash -O ~/.git-completion.bash
 		brew install ack
+		brew install tree
 		brew install brew-cask
 		brew cask install google-chrome
 		brew cask install lastpass
