@@ -24,27 +24,17 @@ if [ "$base" == "y" ]; then
 	brew cask install firefox
 	brew cask install vlc
 	brew cask install dropbox
+	brew cask install google-photos-backup
 	brew cask install the-unarchiver
 	brew cask install iterm2
 	brew cask install skype
 	brew cask install xquartz
 	brew cask install shiftit
-	brew cask install teamviewer
 	brew cask install picasa
 	brew cask install google-drive
-	brew cask install google-hangouts
-	brew cask install flickr-uploadr
 	brew cask install namechanger
+	brew cask install whatsapp
 	sudo easy_install pip
-	# no brew cask for MouseLocator
-	wget --no-check-certificate http://www.2point5fish.com/files/MouseLocator.dmg -O mouselocator.dmg
-	hdiutil	mount mouselocator.dmg
-	cp -r /Volumes/Mouse*/Mouse*.app/Contents/Resources/Distribution/MouseLocator.prefPane ~/Library/PreferencePanes/
-	hdiutil unmount -force /Volumes/Mouse*
-	rm mouselocator.dmg
-	# brew cask for prey requires API key
-	echo -n  -e "\033[1;31mInstall Prey manually \033[0m"
-	echo ""
 else:
 	echo -n  -e "To install Command Line Tools, run this ---> \033[1;31mxcode-select --install\033[0m"
 	echo ""
@@ -63,10 +53,8 @@ if [ "$dev" == "y" ]; then
 	brew cask install jabber-video
 	brew cask install slack
 	brew cask install jing
-	brew cask install sequel-pro
 	brew cask install virtualbox
 	brew cask install java
-	brew install mysql
 	brew install phantomjs
 	brew install chromedriver
 	sudo easy_install nose
@@ -78,14 +66,6 @@ if [ "$dev" == "y" ]; then
 	ln -s /opt/homebrew-cask/Caskroom/firefox/4*/Firefox.app /Applications/Firefox.app
 	echo -n  -e "\033[1;31mInstall Microsoft Remote Desktop  manually \033[0m"
 	echo ""
-	#brew cask install vagrant
-	#brew cask install mongohub
-	#\curl -L https://get.rvm.io | bash -s stable --ruby
-	#/bin/bash --login -c "rvm reload && gem install bundler"
-	#vagrant plugin install vagrant-omnibus
-	#vagrant plugin install vagrant-berkshelf
-	#/bin/bash --login -c "rvm reload && gem install bundler"
-	#/bin/bash --login -c "rvm reload && gem install berkshelf"
 fi
 echo -n -e "\033[1;31mdotfiles in /Volumes/Stuff/repo/dotfiles/? \033[0;32m(y/n): \033[0m"
 read -n 1 sym
@@ -122,7 +102,8 @@ brew cleanup && brew cask cleanup
 rm -f -r /Library/Caches/Homebrew/*
 echo""
 echo -e "To change hostname, run this ---> \033[1;31msudo scutil --set HostName <hostname>\033[0m"
-echo -e "Mouse Locator Agent lives here ----> \033[1;31m/Users/sajnikanth/Library/PreferencePanes/MouseLocator.prefPane/Contents/Resources/\033[0m"
 echo -e "enable hot corners, dock animation, install app from anywhere, turn on firewall, turn off Auto Sleep, keyboard repeat fast\033[0m"
-echo -e "keyboard tab for all controls, set alt+space to spotlight, mouse, touchpad, user image, show date, change textdit preference\033[0m"
+echo -e "keyboard tab for all controls, mouse, touchpad, show date, change textdit preference\033[0m"
+echo -e "setup TV shows with this URL\033[0m"
+echo -e "http://showrss.info/user/117918.rss?magnets=true&namespaces=true&name=null&quality=null&re=null\033[0m"
 echo ""
