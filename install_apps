@@ -24,10 +24,9 @@ if [ "$base" == "y" ]; then
 	brew cask install firefox
 	brew cask install vlc
 	brew cask install dropbox
-	brew cask install google-photos-backup
+	brew cask install google-photos-backup-and-sync
 	brew cask install the-unarchiver
 	brew cask install iterm2
-	brew cask install skype
 	brew cask install xquartz
 	brew cask install shiftit
 	brew cask install picasa
@@ -50,21 +49,20 @@ echo -n  -e "\033[1;31mInstall dev apps? \033[0;32m(y/n): \033[0m"
 read -n 1 dev
 echo ""
 if [ "$dev" == "y" ]; then
+	touch ~/.hushlogin
 	brew cask install jabber-video
 	brew cask install slack
 	brew cask install jing
-	brew cask install virtualbox
-	brew cask install java
-	brew install phantomjs
 	brew install chromedriver
 	sudo easy_install nose
 	sudo easy_install bpython
 	sudo pip install -U selenium
 	sudo pip install -U holmium.core
+	brew cask install java
+	brew install allure
 	sudo pip install flake8
 	sudo pip install grip
 	ln -s /opt/homebrew-cask/Caskroom/firefox/4*/Firefox.app /Applications/Firefox.app
-	echo -n  -e "\033[1;31mInstall Microsoft Remote Desktop  manually \033[0m"
 	echo ""
 fi
 echo -n -e "\033[1;31mdotfiles in /Volumes/Stuff/repo/dotfiles/? \033[0;32m(y/n): \033[0m"
@@ -89,8 +87,13 @@ if [ "$sym" == "y" ]; then
 	/bin/bash --login -c 'sudo chmod 700 ~/.ssh/*'
 	ln -s /Volumes/Stuff/Cloud/Dropbox/ ~/Dropbox
 	ln -s /Volumes/Stuff/repo/ ~/repo
-	ln -s /Volumes/Stuff/repo/mhn-api-tests ~/api
-	ln -s /Volumes/Stuff/repo/mhn-holmium ~/holm
+	ln -s /Volumes/Stuff/repo/albelli/py-tests-common ~/common
+	ln -s /Volumes/Stuff/repo/albelli/py-tests-docker ~/docker
+	ln -s /Volumes/Stuff/repo/albelli/mhn-api-tests ~/api
+	ln -s /Volumes/Stuff/repo/albelli/xsell-api-tests ~/xsell
+	ln -s /Volumes/Stuff/repo/albelli/mhn-mobile-tests ~/mobile
+	ln -s /Volumes/Stuff/repo/albelli/mhn-ui-tests ~/holm
+	ln -s /Volumes/Stuff/repo/octopy ~/oct
 	/bin/bash --login -c ". ~/.bash_profile"
 	mkdir ~/bin
 	ln -s /Volumes/Stuff/repo/dotfiles/clean ~/bin/clean
