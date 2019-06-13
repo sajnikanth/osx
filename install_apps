@@ -10,7 +10,8 @@ read -n 1 base
 echo ""
 if [ "$base" == "y" ]; then
 	ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-	sudo chown -R $(whoami):admin /usr/local # from OSX 10.11
+	# sudo chown -R $(whoami):admin /usr/local # from OSX 10.11
+	touch ~/.hushlogin
 	brew doctor
 	brew tap phinze/homebrew-cask
 	brew install wget
@@ -19,6 +20,8 @@ if [ "$base" == "y" ]; then
 	brew install ack
 	brew install tree
 	brew install brew-cask
+	brew install chromedriver
+	brew install allure
 	brew cask install google-chrome
 	brew cask install lastpass
 	brew cask install vlc
@@ -31,7 +34,10 @@ if [ "$base" == "y" ]; then
 	brew cask install google-drive
 	brew cask install namechanger
 	brew cask install whatsapp
-	sudo easy_install pip
+	brew cask install spotify
+	brew cask install slack
+	brew cask install jing
+	brew cask install java
 else:
 	echo -n  -e "To install Command Line Tools, run this ---> \033[1;31mxcode-select --install\033[0m"
 	echo ""
@@ -46,18 +52,14 @@ echo -n  -e "\033[1;31mInstall dev apps? \033[0;32m(y/n): \033[0m"
 read -n 1 dev
 echo ""
 if [ "$dev" == "y" ]; then
-	touch ~/.hushlogin
-	brew cask install slack
-	brew cask install jing
-	brew install chromedriver
-	sudo easy_install nose
-	sudo easy_install bpython
-	sudo pip install -U selenium
-	sudo pip install -U holmium.core
-	brew cask install java
-	brew install allure
-	sudo pip install flake8
-	sudo pip install grip
+	echo -n  -e "use python3 and install it properly"
+	# sudo easy_install nose
+	# sudo easy_install bpython
+	# sudo pip install -U selenium
+	# sudo pip install -U holmium.core
+	# sudo easy_install pip
+	# sudo pip install flake8
+	# sudo pip install grip
 	echo ""
 fi
 echo -n -e "\033[1;31mdotfiles in /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/dotfiles/? \033[0;32m(y/n): \033[0m"
@@ -80,23 +82,11 @@ if [ "$sym" == "y" ]; then
 	rm ~/.ssh
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/dotfiles/.ssh/ ~/.ssh
 	/bin/bash --login -c 'sudo chmod 700 ~/.ssh/*'
-	rm ~/Dropbox
 	ln -s /Volumes/Stuff/Cloud/Dropbox/ ~/Dropbox
-	rm ~/repo
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/ ~/repo
-	rm ~/common
+	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/photo-organiser ~/tests
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/py-tests-common ~/common
-	rm ~/docker
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/py-tests-docker ~/docker
-	rm ~/api
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/mhn-api-tests ~/api
-	rm ~/xsell
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/xsell-api-tests ~/xsell
-	rm ~/mobile
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/mhn-mobile-tests ~/mobile
-	rm ~/holm
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/mhn-ui-tests ~/holm
-	rm ~/oct
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/octopy ~/oct
 	/bin/bash --login -c ". ~/.bash_profile"
 	rm -rf ~/bin
