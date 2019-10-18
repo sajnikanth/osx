@@ -1,10 +1,10 @@
 #!/bin/bash
-echo -n  -e "\033[1;31mDoes /usr/local/ exist? (Refer to http://j.mp/1O4rePe) \033[0;32m(y/n): \033[0m"
-read -n 1 base
-echo ""
-if [ "$base" == "y" ]; then
-	sudo chown -R $(whoami):admin /usr/local
-fi
+# echo -n  -e "\033[1;31mDoes /usr/local/ exist? (Refer to http://j.mp/1O4rePe) \033[0;32m(y/n): \033[0m"
+# read -n 1 base
+# echo ""
+# if [ "$base" == "y" ]; then
+# 	sudo chown -R $(whoami):admin /usr/local
+# fi
 echo -n  -e "\033[1;31mHave you installed Command Line Tools? \033[0;32m(y/n): \033[0m"
 read -n 1 base
 echo ""
@@ -37,7 +37,7 @@ if [ "$base" == "y" ]; then
 	brew cask install spotify
 	brew cask install slack
 	brew cask install jing
-	brew cask install java
+	# brew cask install java
 else:
 	echo -n  -e "To install Command Line Tools, run this ---> \033[1;31mxcode-select --install\033[0m"
 	echo ""
@@ -82,11 +82,10 @@ if [ "$sym" == "y" ]; then
 	rm ~/.ssh
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/dotfiles/.ssh/ ~/.ssh
 	/bin/bash --login -c 'sudo chmod 700 ~/.ssh/*'
-	ln -s /Volumes/Stuff/Cloud/Dropbox/ ~/Dropbox
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/ ~/repo
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/photo-organiser ~/tests
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/py-tests-common ~/common
-	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/mhn-mobile-tests ~/mobile
+	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/photo-organiser/PhotoOrganizer-Tests ~/api
+	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/photo-organiser/StorageAPI-Tests ~/storage
+	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/photo-organiser/PhotoOrganizer-Tests-UI ~/ui
+	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/albelli/photo-organiser/PhotoOrganizer-Tests-Mobile ~/mobile
 	ln -s /Volumes/Stuff/Cloud/Dropbox\ \(Personal\)/repo/octopy ~/oct
 	/bin/bash --login -c ". ~/.bash_profile"
 	rm -rf ~/bin
