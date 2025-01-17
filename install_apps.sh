@@ -41,7 +41,7 @@ if [ "$sym" == "y" ]; then
 	git config --global core.excludesfile ~/.gitignore_global
 
 	rm ~/.ssh
-	ln -s ~/Dropbox/repo/dotfiles/.ssh/ ~/.ssh
+	ln -s ~/Dropbox/repo/dotfiles/.ssh ~/.ssh
 	/bin/bash --login -c 'sudo chmod 700 ~/.ssh/*'
 fi
 echo -e "Cleanup "
